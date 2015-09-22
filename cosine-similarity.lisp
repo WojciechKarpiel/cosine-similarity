@@ -6,13 +6,13 @@
 
 (defun split-words (input-string)
            (let ((lowercase-input (string-downcase input-string))
-                 (predicate (lambda (char) (position char " .,;:-()[]{}_*/"))))
+                 (predicate (lambda (char) (position char " .,!?;:-()[]{}_*/"))))
              (split-sequence:split-sequence-if predicate lowercase-input :remove-empty-subseqs t)))
 
 (defun make-hash-of-words (input-string &optional (appended-hash (make-hash-table :test 'equal)))
-    (do ((ms (split-words input-string) (cdr ms)))
-        ((eq nil ms) appended-hash)
-      (let* ((word (car ms))
+    (do ((words (split-words input-string) (cdr words)))
+        ((eq nil words) appended-hash)
+      (let* ((word (car words))
             (word-count (gethash word appended-hash)))
         (if word-count
             (setf (gethash word appended-hash) (+ 1 word-count))
