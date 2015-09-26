@@ -15,3 +15,6 @@ Okay, tell me more
 ------------------
 It's a common lisp implementation of [this brilliant idea](http://blog.nishtahir.com/2015/09/19/fuzzy-string-matching-using-cosine-similarity/).  
 You treat strings as vectors and calculate cosinus of angle between them.
+
+### Bonus
+Implementation of the same in Clojure (purely functional, much better)
